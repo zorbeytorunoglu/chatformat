@@ -1,0 +1,8 @@
+chat-format:
+  default: '&7[&r%vault_rankprefix%&7] &f%player_name%&7: &r%message%'
+  per-group:
+    enabled: true
+    groups:
+      player: '&7[&a%vault_rankprefix%&7] &f%player_name%&7: &r%message%'
+      admin: '&7[&c%vault_rankprefix%&7] &c%player_name%&7: &r%message%'
+      owner: '&7[&r%vault_rankprefix%&7] &4%player_name%&7: &r%message%'
