@@ -1,5 +1,6 @@
 package com.zorbeytorunoglu.chatformat
 
+import com.zorbeytorunoglu.chatformat.commands.CmdChatFormat
 import com.zorbeytorunoglu.chatformat.configuration.ConfigContainer
 import com.zorbeytorunoglu.chatformat.configuration.ConfigHandler
 import com.zorbeytorunoglu.chatformat.configuration.Resource
@@ -18,9 +19,7 @@ class CH: JavaPlugin() {
 
     override fun onEnable() {
 
-        configResource = Resource(this, "config.yml")
-        configResource.load()
-        configHandler = ConfigHandler(ConfigContainer(configResource))
+        reloadConfig()
 
         if (!papiExists()) {
             logger.log(Level.SEVERE, "[ChatFormat] Chat format can not work without PlaceholderAPI plugin." +
@@ -30,6 +29,7 @@ class CH: JavaPlugin() {
 
         papiUtils = PAPIUtils(this)
 
+        CmdChatFormat(this)
         Chat(this)
 
     }
@@ -40,6 +40,12 @@ class CH: JavaPlugin() {
 
     fun getPapiUtils(): PAPIUtils {
         return papiUtils
+    }
+
+    override fun reloadConfig() {
+        configResource = Resource(this, "config.yml")
+        configResource.load()
+        configHandler = ConfigHandler(ConfigContainer(configResource))
     }
 
     private fun papiExists(): Boolean {
