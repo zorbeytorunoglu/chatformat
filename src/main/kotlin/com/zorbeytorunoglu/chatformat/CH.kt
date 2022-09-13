@@ -9,7 +9,6 @@ import com.zorbeytorunoglu.chatformat.utils.PAPIUtils
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.logging.Level
-import kotlin.math.log
 
 class CH: JavaPlugin() {
 
